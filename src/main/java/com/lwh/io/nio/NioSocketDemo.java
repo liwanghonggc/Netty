@@ -6,6 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.Iterator;
 
+
 public class NioSocketDemo {
 
     private Selector selector;
@@ -14,6 +15,14 @@ public class NioSocketDemo {
         NioSocketDemo nio = new NioSocketDemo();
         nio.initServer(8846);
         nio.listenSelector();
+
+        char c = '9';
+        char d = '4';
+        Character e = 'c';
+        e.toString();
+
+        char r = (char)65;
+
     }
 
     public void initServer(int port) throws IOException{
