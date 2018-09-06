@@ -1,4 +1,4 @@
-package com.lwh.netty.chp1;
+package com.lwh.netty.chp1.demo1.httpserver;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

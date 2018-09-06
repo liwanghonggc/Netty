@@ -1,4 +1,4 @@
-package com.lwh.netty.chp1;
+package com.lwh.netty.chp1.demo1.httpserver;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
