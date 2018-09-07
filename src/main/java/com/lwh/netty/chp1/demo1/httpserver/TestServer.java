@@ -8,6 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * 服务端
+ * netty作为http服务器的demo
  */
 public class TestServer {
 

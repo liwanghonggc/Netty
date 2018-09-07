@@ -5,6 +5,9 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+/**
+ * netty的socket编程例子
+ */
 public class MyServer {
 
     public static void main(String[] args) throws Exception {
