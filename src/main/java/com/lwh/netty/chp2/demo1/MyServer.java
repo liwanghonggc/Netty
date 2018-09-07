@@ -27,7 +27,7 @@ public class MyServer {
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     //请求到来之后由handler处理,我们可以定制自己的handler
                     .handler(new LoggingHandler(LogLevel.INFO))
-                    .childHandler(null);
+                    .childHandler(new WebSocketChannelInitializer());
 
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
