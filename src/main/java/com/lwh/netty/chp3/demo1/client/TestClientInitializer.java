@@ -23,7 +23,7 @@ public class TestClientInitializer extends ChannelInitializer<SocketChannel> {
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
 
         //解码器,将字节码数组转为真正的对象,里面参数是要转换的对象类型
-        pipeline.addLast(new ProtobufDecoder(MyDataInfo.Person.getDefaultInstance()));
+        pipeline.addLast(new ProtobufDecoder(MyDataInfo.MyMessage.getDefaultInstance()));
 
         pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
 
