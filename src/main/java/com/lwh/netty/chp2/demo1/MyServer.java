@@ -11,6 +11,7 @@ import io.netty.handler.logging.LoggingHandler;
 /**
  * @author lwh
  * @date 2018-09-07
+ * @desp WebSocket的demo
  */
 public class MyServer {
 
