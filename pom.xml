@@ -14,6 +14,19 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.10.Final</version>
         </dependency>
+
+        <!--谷歌的protobuf依赖,总共有3个jar包,大部分情况下只需这个-->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.6.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>3.6.0</version>
+        </dependency>
     </dependencies>
 
 
