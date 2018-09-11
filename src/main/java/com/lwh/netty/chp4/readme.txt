@@ -1,0 +1,4 @@
+Thrift使用demo
+
+Protobuf主要用来定义消息,传输消息的载体可以使用Netty
+而Thrift可以用来定义消息,也提供了传输功能,也可以使用Netty作为底层传输的载体
