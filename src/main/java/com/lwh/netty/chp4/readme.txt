@@ -22,3 +22,6 @@ struct结构体,类似C语言
 文件包含include,类似import
 Thrift注释,#
 可选与必选,required或者optional
+
+在命令行里执行下面命令,可以生成客户端服务端代码
+thrift -r --gen java data.thrift

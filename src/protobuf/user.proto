@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.lwh.netty.chp3.protobuf;
+
+option optimize_for = SPEED;
+
+option java_package = "com.lwh.netty.chp3.protobuf";
+option java_outer_classname = "UserInfo";
+
+message User{
+    required string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
