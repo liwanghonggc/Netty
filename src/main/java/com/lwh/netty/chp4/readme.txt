@@ -25,3 +25,26 @@ Thrift注释,#
 
 在命令行里执行下面命令,可以生成客户端服务端代码
 thrift -r --gen java data.thrift
+
+Thrift传输格式：
+TBinaryProtocol      二进制格式,较常用
+TCompactProtocol     压缩格式,用的最多
+TJSONProtocol        JSON格式
+TSimpleJSONProtocol  提供JSON只写协议,生成的文件很容易通过脚本语言解析,不常使用
+TDebugProtocol       使用易懂的可读的文本格式,用于debug
+
+
+Thrift数据传输方式：
+TSocket              阻塞式Socket
+TFramedTransport     以frame为单位进行传输,非阻塞式服务中使用,建议使用这个
+TFileTransport       以文件形式进行传输
+TMemoryTransport     将内存用于IO,Java实现时内部实际使用了简单的ByteArrayOutputStream
+TZlibTransport       使用Zlib进行压缩,与其他传输方式联合使用,当前无Java实现
+
+
+Thrift支持的服务模型：
+TSimpleServer        简单的单线程服务模型,常用于测试
+TThreadPoolServer    多线程服务模型,使用标准的阻塞式IO,一个请求来了起一个线程
+TNonblocklingServer  多线程服务模型,使用非阻塞式IO(需使用TFramedTransport的数据传输方式)
+THsHaServer          THsHa引入了线程池去处理,其模型把读写任务放到线程池去处理;Half-sync/Half-async的处理模式(半同步半异步),Half-async是在处理IO事件上,Half-sync用于handler对rpc的同步处理
+                     它是TNonbloclingServer的扩展,也需要使用TFramedTransport的数据传输方式,建议使用这个

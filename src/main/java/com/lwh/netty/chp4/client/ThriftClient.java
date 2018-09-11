@@ -16,6 +16,7 @@ import org.apache.thrift.transport.TTransport;
 public class ThriftClient {
 
     public static void main(String[] args) {
+        //客户端和服务端的TTransport和TProtocol要一致
         TTransport transport = new TFramedTransport(new TSocket("localhost", 8899), 600);
         TProtocol protocol = new TCompactProtocol(transport);
 

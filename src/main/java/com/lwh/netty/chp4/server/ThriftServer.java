@@ -17,16 +17,20 @@ import org.apache.thrift.transport.TNonblockingServerSocket;
 public class ThriftServer {
 
     public static void main(String[] args) throws Exception{
+        //服务端与客户端的socket连接
         TNonblockingServerSocket socket = new TNonblockingServerSocket(8899);
 
         THsHaServer.Args arg = new THsHaServer.Args(socket).minWorkerThreads(2).maxWorkerThreads(4);
 
         PersonService.Processor<PersonServiceImpl> processor = new PersonService.Processor<>(new PersonServiceImpl());
 
+        //二进制压缩协议
         arg.protocolFactory(new TCompactProtocol.Factory());
+        //传输层用到的对象,底层以什么形式传输
         arg.transportFactory(new TFramedTransport.Factory());
         arg.processorFactory(new TProcessorFactory(processor));
 
+        //THsHaServer,半同步半异步
         TServer server = new THsHaServer(arg);
 
         System.out.println("Thrift Server Started");
