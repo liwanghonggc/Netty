@@ -26,6 +26,7 @@ public class ThriftServer {
 
         //二进制压缩协议
         arg.protocolFactory(new TCompactProtocol.Factory());
+
         //传输层用到的对象,底层以什么形式传输
         arg.transportFactory(new TFramedTransport.Factory());
         arg.processorFactory(new TProcessorFactory(processor));
