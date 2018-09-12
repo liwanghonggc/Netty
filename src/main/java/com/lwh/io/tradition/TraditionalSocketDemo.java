@@ -7,7 +7,7 @@ import java.net.Socket;
 public class TraditionalSocketDemo {
 
     public static void main(String[] args) throws Exception{
-        ServerSocket serverSocket = new ServerSocket(8235);
+        ServerSocket serverSocket = new ServerSocket(8846);
         System.out.println("服务端启动了");
         while (true){
             //获取客户端套接字
