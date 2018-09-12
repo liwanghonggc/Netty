@@ -30,7 +30,6 @@ public class ThriftServer {
         //传输层用到的对象,底层以什么形式传输
         arg.transportFactory(new TFramedTransport.Factory());
         arg.processorFactory(new TProcessorFactory(processor));
-
         //THsHaServer,半同步半异步
         TServer server = new THsHaServer(arg);
 
