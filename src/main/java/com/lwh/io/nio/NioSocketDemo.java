@@ -15,14 +15,6 @@ public class NioSocketDemo {
         NioSocketDemo nio = new NioSocketDemo();
         nio.initServer(8846);
         nio.listenSelector();
-
-        char c = '9';
-        char d = '4';
-        Character e = 'c';
-        e.toString();
-
-        char r = (char)65;
-
     }
 
     public void initServer(int port) throws IOException{
