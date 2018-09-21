@@ -37,7 +37,9 @@ public class BufferDemo {
 
             //5.切换回写模式
             byteRead = channel.read(buf);
+
         }
         file.close();
+
     }
 }
