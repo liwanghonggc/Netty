@@ -18,6 +18,7 @@ public class NioDemo1 {
             buf.put(num);
         }
 
+        //同一个Buffer既可以读,也可以写,读-->写切换或者写-->读切换,需要调用flip方法切换
         buf.flip();
 
         while(buf.hasRemaining()){
