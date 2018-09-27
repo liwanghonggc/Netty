@@ -5,7 +5,8 @@ import java.nio.ByteBuffer;
 /**
  * @author lwh
  * @date 2018-09-25
- * @desp 只读Buffer
+ * @desp 只读Buffer,我们可以随时将一个普通的Buffer调用asReadOnlyBuffer方法返回一个只读Buffer
+ *       但不能将一个只读Buffer转为读写Buffer
  */
 public class NioDemo6 {
 
