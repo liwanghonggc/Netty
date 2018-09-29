@@ -1,4 +1,4 @@
-package com.lwh.netty.chp6;
+package com.lwh.netty.chp6.demo1;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
