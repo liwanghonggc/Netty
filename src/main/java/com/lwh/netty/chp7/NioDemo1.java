@@ -32,7 +32,7 @@ public class NioDemo1 {
         //内存映射buffer
         MappedByteBuffer inputData = inputFileChannel.map(FileChannel.MapMode.READ_ONLY, 0, inputLength);
 
-        Charset charset = Charset.forName("utf-8");
+        Charset charset = Charset.forName("iso-8859-1");
         CharsetDecoder decoder = charset.newDecoder();
         CharsetEncoder encoder = charset.newEncoder();
 
