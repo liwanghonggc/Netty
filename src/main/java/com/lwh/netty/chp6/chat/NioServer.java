@@ -29,10 +29,10 @@ public class NioServer {
         serverSocketChannel.configureBlocking(false);
 
         ServerSocket socket = serverSocketChannel.socket();
-        socket.bind(new InetSocketAddress(8899));
+        socket.bind(new InetSocketAddress(8800));
 
         Selector selector = Selector.open();
-        serverSocketChannel.register(selector, SelectionKey.OP_READ);
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         while (true) {
             try {
