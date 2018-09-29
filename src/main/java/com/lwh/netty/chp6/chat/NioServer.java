@@ -7,7 +7,10 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * @author lwh
@@ -15,6 +18,9 @@ import java.util.Set;
  * @desp 聊天小程序
  */
 public class NioServer {
+
+    //维护所有客户端的连接信息
+    private static Map<String, SocketChannel> clientMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
@@ -39,10 +45,16 @@ public class NioServer {
 
                     try {
                         if(selectionKey.isAcceptable()){
+                            //之前往selector中注册的是serverSocketChannel,所以取出来的一定是serverSocketChannel,所以可以强制类型转换
                             ServerSocketChannel server = (ServerSocketChannel)selectionKey.channel();
                             client = server.accept();
                             client.configureBlocking(false);
                             client.register(selector, SelectionKey.OP_READ);
+
+                            String key = "[" + UUID.randomUUID().toString() + "]";
+                            clientMap.put(key, client);
+                        }else if(selectionKey.isReadable()){
+                            client = (SocketChannel) selectionKey.channel();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
