@@ -1,4 +1,4 @@
-package com.lwh.netty.chp7;
+package com.lwh.netty.chp7.demo1;
 
 import java.io.File;
 import java.io.RandomAccessFile;
@@ -18,8 +18,8 @@ import java.nio.charset.CharsetEncoder;
 public class NioDemo1 {
 
     public static void main(String[] args) throws Exception {
-        String inputFile = "D:\\Software\\IDEA\\Projects\\Netty\\src\\main\\java\\com\\lwh\\netty\\chp7\\input.txt";
-        String outputFile = "D:\\Software\\IDEA\\Projects\\Netty\\src\\main\\java\\com\\lwh\\netty\\chp7\\output.txt";
+        String inputFile = "D:\\Software\\IDEA\\Projects\\Netty\\src\\main\\java\\com\\lwh\\netty\\chp7\\demo1\\input.txt";
+        String outputFile = "D:\\Software\\IDEA\\Projects\\Netty\\src\\main\\java\\com\\lwh\\netty\\chp7\\demo1\\output.txt";
 
         RandomAccessFile inputRandomAccessFile = new RandomAccessFile(inputFile, "r");
         RandomAccessFile outputRandomAccessFile = new RandomAccessFile(outputFile, "rw");
