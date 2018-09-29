@@ -3,10 +3,12 @@ package com.lwh.netty.chp6.chat;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -32,8 +34,8 @@ public class NioServer {
         Selector selector = Selector.open();
         serverSocketChannel.register(selector, SelectionKey.OP_READ);
 
-        while (true){
-            try{
+        while (true) {
+            try {
 
                 //该方法阻塞,直到监听到它感兴趣的事情,返回一个整数,表示它所关注到的事件的数量
                 selector.select();
@@ -44,24 +46,36 @@ public class NioServer {
                     final SocketChannel client;
 
                     try {
-                        if(selectionKey.isAcceptable()){
+                        if (selectionKey.isAcceptable()) {
                             //之前往selector中注册的是serverSocketChannel,所以取出来的一定是serverSocketChannel,所以可以强制类型转换
-                            ServerSocketChannel server = (ServerSocketChannel)selectionKey.channel();
+                            ServerSocketChannel server = (ServerSocketChannel) selectionKey.channel();
                             client = server.accept();
                             client.configureBlocking(false);
                             client.register(selector, SelectionKey.OP_READ);
 
                             String key = "[" + UUID.randomUUID().toString() + "]";
                             clientMap.put(key, client);
-                        }else if(selectionKey.isReadable()){
+                        } else if (selectionKey.isReadable()) {
                             client = (SocketChannel) selectionKey.channel();
+                            ByteBuffer buffer = ByteBuffer.allocate(1024);
+
+                            int count = client.read(buffer);
+
+                            if (count > 0) {
+                                buffer.flip();
+
+                                Charset charset = Charset.forName("utf-8");
+                                String receivedMsg = String.valueOf(charset.decode(buffer).array());
+
+                                System.out.println(client + ": " + receivedMsg);
+                            }
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 });
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
