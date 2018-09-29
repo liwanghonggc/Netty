@@ -3,6 +3,7 @@ package com.lwh.netty.chp6;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
+import java.nio.ByteBuffer;
 import java.nio.channels.*;
 import java.util.Iterator;
 import java.util.Set;
@@ -49,6 +50,7 @@ public class NioDemo1 {
 
             while (itr.hasNext()){
                 SelectionKey selectionKey = itr.next();
+
                 if(selectionKey.isAcceptable()){
                     ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
                     SocketChannel socketChannel = serverSocketChannel.accept();
@@ -60,6 +62,34 @@ public class NioDemo1 {
                     itr.remove();
 
                     System.out.println("获得客户端的连接: " + socketChannel);
+                }else if(selectionKey.isReadable()){
+                    SocketChannel socketChannel = (SocketChannel) selectionKey.channel();
+
+                    int bytesRead = 0;
+
+                    while(true){
+                        ByteBuffer buffer = ByteBuffer.allocate(512);
+
+                        buffer.clear();
+
+                        int read = socketChannel.read(buffer);
+
+                        //读完了
+                        if(read <= 0){
+                            break;
+                        }
+
+                        buffer.flip();
+
+                        socketChannel.write(buffer);
+
+                        bytesRead += read;
+                    }
+
+                    System.out.println("读取了: " + bytesRead + ", 来自于: " + socketChannel);
+
+                    //一定要remove
+                    itr.remove();
                 }
             }
         }
