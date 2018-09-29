@@ -11,7 +11,7 @@ import io.netty.util.CharsetUtil;
 import java.net.URI;
 
 /**
- * 自定义的Handler
+ * 自定义的Handler,Inbound表示请求进来
  */
 public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObject> {
 

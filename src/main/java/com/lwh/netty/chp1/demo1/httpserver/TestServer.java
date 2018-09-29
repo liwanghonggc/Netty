@@ -14,12 +14,12 @@ public class TestServer {
 
     public static void main(String[] args) throws InterruptedException {
 
-        //两个死循环,bossGroup获取连接,将连接转给workerGroup处理
+        //两个死循环,事件循环组,bossGroup获取连接,将连接转给workerGroup处理
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-            //用于轻松启动Server服务端
+            //用于轻松启动Server服务端,辅助类,用于简化Netty的启动流程
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             //关联处理器
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
