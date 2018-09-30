@@ -21,6 +21,9 @@ public class MyServer {
         try{
             //Netty提供的辅助类,用于一些属性设置
             ServerBootstrap serverBootstrap = new ServerBootstrap();
+
+            //方法链编程风格
+            //channel方法,一个方法接收class参数,或多或少会用到反射
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new MyServerInitializer());
 
