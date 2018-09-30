@@ -14,6 +14,7 @@ public class MyServer {
     public static void main(String[] args) throws Exception {
         //bossGroup用来接收客户端的连接,将连接交给workerGroup处理
         //事件循环组,底层就是一个死循环,作用就是在后序事件循环过程中,在select进行操作时,注册一个个channel
+        //它只是做了一些准备工作,可以通过构造方法指定线程数,通常指定为1,默认线程数为 availableProcessors() * 2
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
