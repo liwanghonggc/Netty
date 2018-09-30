@@ -27,6 +27,7 @@ public class MyServer {
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new MyServerInitializer());
 
+            //真正服务器启动的方法,bind()方法,前面的准备工作都是为bind做准备的
             ChannelFuture channelFuture = serverBootstrap.bind(8080).sync();
             channelFuture.channel().closeFuture().sync();
         }finally {
