@@ -19,6 +19,7 @@ public class MyServer {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try{
+            //Netty提供的辅助类,用于一些属性设置
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new MyServerInitializer());
