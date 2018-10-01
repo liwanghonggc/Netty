@@ -19,7 +19,8 @@ public class MyServer {
         //它只是做了一些准备工作,可以通过构造方法指定线程数,通常指定为1,默认线程数为 availableProcessors() * 2
         EventLoopGroup bossGroup = new NioEventLoopGroup();
 
-        //workerGroup是IO线程组,acceptor完成将bossGroup接收到的连接交给workerGroup
+        //workerGroup是IO线程组,acceptor完成将bossGroup接收到的连接交给workerGroup,由workerGroup中的一个IO线程来完成回调方法
+        //若回调方法处理事件过程,则应当由业务线程池来处理该方法
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try{
