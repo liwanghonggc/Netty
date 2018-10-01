@@ -30,8 +30,6 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
    发生，Initiation Dispatcher首先会分离出每一个事件(即遍历SelectionKey)，然后调用应用事件处理器，最后调用相关的回调方法来处理事件。
 
 
-Reactor或者Initiation Dispatcher启动之后首先若干个Event Handler注册到其上,同时指定其感兴趣的事件.当有感兴趣的事件发生时,由Dispatcher调用回调方法.
-
 3、Reactor模式的流程
 1) 当应用向Initiation Dispatcher注册具体的事件处理器时,应用会标识出该事件处理器希望Initiation Dispatcher在某个事件发生时向其通知该事件,该事件与Handle关联
 
