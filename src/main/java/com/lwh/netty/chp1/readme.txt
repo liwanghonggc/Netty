@@ -2,3 +2,7 @@ demo1 netty作为http服务器的demo
 demo2 netty的socket编程例子
 demo3 netty的聊天例子
 demo4 netty的心跳检测机制
+
+Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
+
+Proactor模式
