@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author lwh
  * @date 2018-10-01
- * @desp
+ * @desp AdaptiveRecvByteBufAllocator,它以SIZE_TABLE中的元素大小来分配缓冲区的大小
  */
 public class Test2 {
 
