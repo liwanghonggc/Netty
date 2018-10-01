@@ -29,3 +29,22 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
    事件处理器的注册、删除等设施。它本身是整个事件处理器的核心所在，Initiation Dispatcher会通过同步事件分离器来等待事件的发生，一旦事件发生，一旦事件
    发生，Initiation Dispatcher首先会分离出每一个事件(即遍历SelectionKey)，然后调用应用事件处理器，最后调用相关的回调方法来处理事件。
 
+
+Reactor或者Initiation Dispatcher启动之后首先若干个Event Handler注册到其上,同时指定其感兴趣的事件.当有感兴趣的事件发生时,由Dispatcher调用回调方法.
+
+3、Reactor模式的流程
+1) 当应用向Initiation Dispatcher注册具体的事件处理器时,应用会标识出该事件处理器希望Initiation Dispatcher在某个事件发生时向其通知该事件,该事件与Handle关联
+
+2) Initiation Dispatcher会要求每个事件处理器向其传递内部的Handle,该Handle向操作系统表示了事件处理器
+
+3) 当所有的事件处理器注册完毕后,应用会调用handle_event方法来启动Initiation Dispatcher的事件循环.这时,Initiation Dispatcher会将每个注册的事件管理器的Handle
+   合并起来,并使用同步事件分离器来等待这些事件的发生.比如说,TCP协议层会使用select同步事件分离器操作来等待客户端发送的数据到达连接的socket handle上.
+
+4) 当某个事件源对应的Handle变为ready状态时(比如说TCP Socket变为等待读状态时),同步事件分离器会通知Initiation Dispatcher
+
+5) Initiation Dispatcher会触发事件处理器的回调方法,从而响应这个处于ready状态的Handle.当事件发生时,Initiation Dispatcher会将被事件源激活的Handle作为Key来寻找
+   并分发恰当的事件处理器回调方法.
+
+6) Initiation Dispatcher会回调事件处理器的handle event回调方法来执行特定于应用的逻辑(开发者自己所编写的功能),从而响应这个事件,所发生的事件类型可以作为该方法的参数
+   并被该方法内部使用来执行额外的特定于服务的分离与分发.
+
