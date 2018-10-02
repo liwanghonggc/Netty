@@ -46,3 +46,7 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 6) Initiation Dispatcher会回调事件处理器的handle event回调方法来执行特定于应用的逻辑(开发者自己所编写的功能),从而响应这个事件,所发生的事件类型可以作为该方法的参数
    并被该方法内部使用来执行额外的特定于服务的分离与分发.
 
+
+4、ChannelPipeline
+1) 它是位于AbstractChannel中的,它是一个循环链表
+
