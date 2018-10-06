@@ -11,3 +11,16 @@ Channel指的是可以向其写入数据或者从其中读取数据的对象,它
 与Stream不同的是,Channel是双向的,一个流只可能是InputStream或者OutputStream,Channel打开之后可以进行读取、写入或是读写.
 
 由于Channel是双向的,因此它能更好的反映出底层操作系统的真实情况,在Linux中,底层操作系统的通道就是双向的.
+
+2、使用NIO进行文件读取所涉及的步骤
+1) 从FileInputStream对象获取Channel对象
+2) 创建Buffer
+3) 将数据读取到Buffer对象中
+
+3、Java的NIO的ByteBuffer
+1) 0 <= mark <= position <= limit <= capacity
+2) flip方法作用：将limit设置为当前position值,将position设置为0
+3) clear方法：将limit设置为capacity,将position设置为0,并没有删除数组中任何元素
+4) compact方法：将所有未读的元素复制到buffer起始位置处,将position设为最后未读元素的后面,将limit设为capacity
+
+https://www.zhihu.com/question/57374068
