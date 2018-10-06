@@ -50,3 +50,11 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 4、ChannelPipeline
 1) 它是位于AbstractChannel中的,它是一个双向链表
 
+
+5、
+1) 一个EventLoopGroup会包含一个或多个EventLoop
+2) 一个EventLoop在它的整个生命周期中都只会与唯一一个Thread进行绑定
+3) 所有由EventLoop所处理的各种IO事件都将在它所关联的那个Thread进行处理
+4) 一个Channel在它的整个生命周期中只会注册在一EventLoop上,而一个EventLoop只会关联一个Thread,因此Channel中的那些handler方法只会由同一个线程来调用执行,不会有多线程问题
+5) 一个EventLoop在运行过程当中,会被分配一个或者多个Channel
+
