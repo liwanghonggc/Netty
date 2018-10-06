@@ -70,3 +70,6 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 2) 借助于Netty提供的向ChannelPipeline添加ChannelHandler时调用的addLast方法来传递EventExecutor,默认情况下,调用addLast(handler),ChannelHandler中的回调方法都是由IO线程所
    执行,如果调用了ChannelPipeline addLast(EventExecutorGroup group, ChannelHandler... handlers)方法,那么ChannelHandler中的回调方法就是由参数中的group线程组来执行的
 
+6、JDK的Future、Netty的Future、Promise等关系
+1) JDK所提供的Future只能通过手动方式检查执行结果,而这个操作是会阻塞的.Netty则对ChannelFuture进行了增强,通过ChannelFutureListener以回调的方式来获取执行结果,去除了手工检查阻塞结果的操作.
+   值得注意的是,ChannelFutureListener的operationComplete方法是由IO线程执行的,因此要注意的是不要在这里执行耗时操作,否则需要通过另外的线程或者线程池来执行.
