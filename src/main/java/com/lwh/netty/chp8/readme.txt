@@ -1,0 +1,1 @@
+1、通过索引来访问ByteBuf时并不会改变真实的读索引与写索引,我们可以通过ByteBuf的readerIndex()与writerIndex()来修改它的读写索引.
