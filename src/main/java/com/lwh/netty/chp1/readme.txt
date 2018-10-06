@@ -80,3 +80,14 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 结论：
 1) ChannelHandlerContext与ChannelHandler之间的关联绑定关系是永远不会发生改变的,因此对其进行缓存是没有任何问题的
 2) 对于与Channel的同名方法来说,ChannelHandlerContext的方法会产生更短的事件流,所以我们应该在可能的情况下利用这个特性来提升应用性能
+
+8、Netty既作为服务端,又作为客户端时
+   public void channelActive(ChannelHandlerContext ctx){
+       BootStrap bootstrap = ...;
+       bootstrap.channel(NioSocketChannel.class).handler(
+
+           //使用已有的eventLoop作为客户端绑定的eventLoop
+           bootstrap.group(ctx.channel().eventLoop());
+           bootstrap.connect();
+       )
+   }
