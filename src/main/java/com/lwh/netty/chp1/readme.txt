@@ -48,5 +48,5 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 
 
 4、ChannelPipeline
-1) 它是位于AbstractChannel中的,它是一个循环链表
+1) 它是位于AbstractChannel中的,它是一个双向链表
 
