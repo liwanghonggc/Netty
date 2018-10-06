@@ -73,3 +73,6 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 6、JDK的Future、Netty的Future、Promise等关系
 1) JDK所提供的Future只能通过手动方式检查执行结果,而这个操作是会阻塞的.Netty则对ChannelFuture进行了增强,通过ChannelFutureListener以回调的方式来获取执行结果,去除了手工检查阻塞结果的操作.
    值得注意的是,ChannelFutureListener的operationComplete方法是由IO线程执行的,因此要注意的是不要在这里执行耗时操作,否则需要通过另外的线程或者线程池来执行.
+
+7、在Netty中有两种发送消息的方式,ctx.channel().writeAndFlush或者ctx.writeAndFlush(),即它可以直接写到channel中,也可以写到与ChannelHandler所关联的那个ChannelHandlerContext中.对于前
+   一种方式来说,消息会从ChannelPipeline的末尾开始流动;对于后一种方式来说,消息将从ChannelPipeline中的下一个ChannelHandler开始流动
