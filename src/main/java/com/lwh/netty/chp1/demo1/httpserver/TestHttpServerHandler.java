@@ -29,6 +29,7 @@ public class TestHttpServerHandler extends SimpleChannelInboundHandler<HttpObjec
                 return;
             }
             System.out.println("执行channelRead0");
+
             ByteBuf content = Unpooled.copiedBuffer("Hello world", CharsetUtil.UTF_8);
             FullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK, content);
             response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain");
