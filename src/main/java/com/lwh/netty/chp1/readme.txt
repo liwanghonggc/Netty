@@ -76,3 +76,7 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 
 7、在Netty中有两种发送消息的方式,ctx.channel().writeAndFlush或者ctx.writeAndFlush(),即它可以直接写到channel中,也可以写到与ChannelHandler所关联的那个ChannelHandlerContext中.对于前
    一种方式来说,消息会从ChannelPipeline的末尾开始流动;对于后一种方式来说,消息将从ChannelPipeline中的下一个ChannelHandler开始流动
+
+结论：
+1) ChannelHandlerContext与ChannelHandler之间的关联绑定关系是永远不会发生改变的,因此对其进行缓存是没有任何问题的
+2) 对于与Channel的同名方法来说,ChannelHandlerContext的方法会产生更短的事件流,所以我们应该在可能的情况下利用这个特性来提升应用性能
