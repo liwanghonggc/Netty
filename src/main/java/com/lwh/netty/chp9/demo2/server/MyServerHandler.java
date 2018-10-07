@@ -5,7 +5,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.util.UUID;
 
-public class MyServerHandler extends SimpleChannelInboundHandler<Long> {
+public class MyServerHandler extends SimpleChannelInboundHandler<String> {
     /**
      * 如果这里面的方法执行时间比较长,会阻塞IO线程池里面的线程,应当由业务线程池来执行任务
      * @param ctx
@@ -13,7 +13,7 @@ public class MyServerHandler extends SimpleChannelInboundHandler<Long> {
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Long msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         //获取远程的地址和内容
         System.out.println(ctx.channel().remoteAddress() + ", " + msg);
 

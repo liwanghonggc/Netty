@@ -1,6 +1,7 @@
 package com.lwh.netty.chp9.demo2.client;
 
 import com.lwh.netty.chp9.demo2.codec.MyByteToLongDecoder;
+import com.lwh.netty.chp9.demo2.codec.MyByteToLongDecoder2;
 import com.lwh.netty.chp9.demo2.codec.MyLongToByteEncoder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -12,7 +13,7 @@ public class MyClientInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
-        pipeline.addLast(new MyByteToLongDecoder());
+        pipeline.addLast(new MyByteToLongDecoder2());
 
         pipeline.addLast(new MyLongToByteEncoder());
 
