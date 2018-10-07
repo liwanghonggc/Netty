@@ -9,3 +9,6 @@
 
    if (!Modifier.isVolatile(modifiers))
          throw new IllegalArgumentException("Must be volatile type");
+
+2、Netty为什么使用AtomicIntegerFieldUpdater而不使用AtomicInteger来维护引用计数?
+   Netty中ByteBuf使用非常多,如果每个ByteBuf内部都维护一个AtomicInteger,会有一定消耗,而AtomicIntegerFieldUpdater是一个全局静态变量,比较高效
