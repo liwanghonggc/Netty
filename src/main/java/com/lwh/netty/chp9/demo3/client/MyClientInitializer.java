@@ -1,7 +1,6 @@
 package com.lwh.netty.chp9.demo3.client;
 
-import com.lwh.netty.chp9.demo2.codec.MyByteToLongDecoder2;
-import com.lwh.netty.chp9.demo2.codec.MyLongToByteEncoder;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;

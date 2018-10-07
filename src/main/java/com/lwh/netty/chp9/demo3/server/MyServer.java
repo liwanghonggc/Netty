@@ -8,8 +8,8 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
  * @author lwh
- * @date 2018-09-07
- * @desp WebSocket的demo
+ * @date 2018-10-07
+ * @desp
  */
 public class MyServer {
 

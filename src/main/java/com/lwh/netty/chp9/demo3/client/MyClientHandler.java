@@ -1,17 +1,27 @@
 package com.lwh.netty.chp9.demo3.client;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
+import java.nio.charset.Charset;
 import java.time.LocalDateTime;
 
-public class MyClientHandler extends SimpleChannelInboundHandler<Long> {
+public class MyClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
+
+    private int count;
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, Long msg) throws Exception {
-        System.out.println(ctx.channel().remoteAddress());
-        System.out.println("client output: " + msg);
-        ctx.writeAndFlush("from client: " + LocalDateTime.now());
+    protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
+        byte[] buffer = new byte[msg.readableBytes()];
+
+        msg.readBytes(buffer);
+
+        String message = new String(buffer, Charset.forName("utf-8"));
+
+        System.out.println("客户端收到的消息内容：" + message);
+        System.out.println("客户端收到的消息数量: " + (++this.count));
     }
 
     @Override
@@ -22,6 +32,9 @@ public class MyClientHandler extends SimpleChannelInboundHandler<Long> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(123456L);
+        for(int i = 0; i < 10; i++){
+            ByteBuf buffer = Unpooled.copiedBuffer("send from client", Charset.forName("utf-8"));
+            ctx.writeAndFlush(buffer);
+        }
     }
 }
