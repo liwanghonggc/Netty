@@ -6,6 +6,11 @@ import io.netty.channel.socket.SocketChannel;
 
 public class MyServerInitializer extends ChannelInitializer<SocketChannel> {
 
+    /**
+     * 该方法每次客户端连接的时候都会调用一次
+     * @param ch
+     * @throws Exception
+     */
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();

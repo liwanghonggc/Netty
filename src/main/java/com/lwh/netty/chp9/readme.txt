@@ -1,6 +1,7 @@
 demo1原子更新demo
 demo2编解码器demo
 demo3TCP粘包拆包
+demo4自定义协议解决TCP粘包
 
 1、AtomicIntegerFieldUpdater要点总结
 1) 更新器更新的必须是int型变量,Integer也不行,不能是包装类型.如果要更新的变量是包装类型,那么可以使用AtomicReferenceFieldUpdater来进行更新
