@@ -65,7 +65,7 @@ Reactor模式：反应器模式,Netty整体架构是Reactor模式的完整体现
 2) 我们在业务开发中,不要将长时间执行的耗时任务放入到EventLoop的执行队列中,因为它将会一直阻塞该线程所对应的的所有Channel上的其他执行任务,如果我们需要进行阻塞调用或是耗时操作(实际
    开发中很常见),那么我们需要使用一个专门的EventExecutor(业务线程池)
 
-业务线程池实现方式：
+业务线程池实现的方式：
 1) 在ChannelHandler的回调方法中,使用自己定义的业务线程池
 2) 借助于Netty提供的向ChannelPipeline添加ChannelHandler时调用的addLast方法来传递EventExecutor,默认情况下,调用addLast(handler),ChannelHandler中的回调方法都是由IO线程所
    执行,如果调用了ChannelPipeline addLast(EventExecutorGroup group, ChannelHandler... handlers)方法,那么ChannelHandler中的回调方法就是由参数中的group线程组来执行的
