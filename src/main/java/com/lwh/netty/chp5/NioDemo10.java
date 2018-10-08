@@ -45,15 +45,15 @@ public class NioDemo10 {
 
             Arrays.asList(buffers).forEach(buffer -> buffer.flip());
 
-            long bytesWriten = 0;
-            while(bytesWriten < messageLength){
+            long bytesWritten = 0;
+            while(bytesWritten < messageLength){
                 long w = socketChannel.write(buffers);
-                bytesWriten += w;
+                bytesWritten += w;
             }
 
             Arrays.asList(buffers).forEach(buffer -> buffer.clear());
 
-            System.out.println("bytesRead: " + bytesRead + ", bytesWriten: " + bytesWriten + ", messageLength: " + messageLength);
+            System.out.println("bytesRead: " + bytesRead + ", bytesWritten: " + bytesWritten + ", messageLength: " + messageLength);
         }
 
     }

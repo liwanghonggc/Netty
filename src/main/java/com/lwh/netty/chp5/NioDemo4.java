@@ -17,7 +17,7 @@ public class NioDemo4 {
         FileOutputStream fos = new FileOutputStream("D:\\Software\\IDEA\\Projects\\Netty\\src\\main\\java\\com\\lwh\\netty\\chp5\\output.txt");
 
         FileChannel inputChannel = fis.getChannel();
-        FileChannel ouputChannel = fos.getChannel();
+        FileChannel outputChannel = fos.getChannel();
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
 
@@ -36,10 +36,10 @@ public class NioDemo4 {
 
             buffer.flip();
 
-            ouputChannel.write(buffer);
+            outputChannel.write(buffer);
         }
 
         inputChannel.close();
-        ouputChannel.close();
+        outputChannel.close();
     }
 }
