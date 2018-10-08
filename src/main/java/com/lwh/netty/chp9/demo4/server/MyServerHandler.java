@@ -1,5 +1,6 @@
-package com.lwh.netty.chp9.demo4;
+package com.lwh.netty.chp9.demo4.server;
 
+import com.lwh.netty.chp9.demo4.protocol.PersonProtocol;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

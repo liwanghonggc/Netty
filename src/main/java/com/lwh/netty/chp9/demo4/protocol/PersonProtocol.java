@@ -1,4 +1,4 @@
-package com.lwh.netty.chp9.demo4;
+package com.lwh.netty.chp9.demo4.protocol;
 
 /**
  * @author lwh

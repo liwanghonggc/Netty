@@ -1,6 +1,6 @@
 package com.lwh.netty.chp9.demo4.codec;
 
-import com.lwh.netty.chp9.demo4.PersonProtocol;
+import com.lwh.netty.chp9.demo4.protocol.PersonProtocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;
