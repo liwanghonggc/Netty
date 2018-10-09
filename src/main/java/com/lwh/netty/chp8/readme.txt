@@ -23,7 +23,7 @@ Netty通过提高内存池来解决这个问题.直接缓冲区并不支持通�
 Composite Buffer(复合缓冲区)
 
 3、JDK的ByteBuffer与Netty的ByteBuf之间的差异对比
-1) Netty的ByteBuf采用了读写索引分离的策略(readerIndex与writerIndex),一个初始化(里面尚未有数据)的ByteBuf的readerIndex和writerInde
+1) Netty的ByteBuf采用了读写索引分离的策略(readerIndex与writerIndex),一个初始化(里面尚未有数据)的ByteBuf的readerIndex和writerIndex
    都为0
 2) 当读索引与写索引位于同一个位置时,如果继续读,就会抛出IndexOutOfBoundsException
 3) 对于ByteBuf的任何读写操作都会分别单独维护读索引与写索引,maxCapacity最大容量默认值就是Integer.MAX_VALUE.
