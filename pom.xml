@@ -20,6 +20,7 @@
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>3.6.0</version>
+
         </dependency>
 
         <dependency>
