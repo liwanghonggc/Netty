@@ -1,6 +1,6 @@
 package com.lwh.netty.test;
 
-import io.netty.util.NettyRuntime;
+//import io.netty.util.NettyRuntime;
 import io.netty.util.internal.SystemPropertyUtil;
 
 /**
@@ -10,9 +10,9 @@ import io.netty.util.internal.SystemPropertyUtil;
  */
 public class Test1 {
 
-    public static void main(String[] args) {
-        int threadNums = Math.max(1, SystemPropertyUtil.getInt(
-                "io.netty.eventLoopThreads", NettyRuntime.availableProcessors() * 2));
-        System.out.println(threadNums);
-    }
+//    public static void main(String[] args) {
+//        int threadNums = Math.max(1, SystemPropertyUtil.getInt(
+//                "io.netty.eventLoopThreads", NettyRuntime.availableProcessors() * 2));
+//        System.out.println(threadNums);
+//    }
 }
