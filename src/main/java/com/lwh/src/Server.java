@@ -24,9 +24,9 @@ public class Server {
 
         try {
             //用于轻松启动Server服务端,辅助类,用于简化Netty的启动流程
-            ServerBootstrap serverBootstrap = new ServerBootstrap();
+            ServerBootstrap b = new ServerBootstrap();
             //关联处理器
-            serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     //给后面连接设置TCP的基本属性
                     .childOption(ChannelOption.TCP_NODELAY, true)
                     //创建连接时,绑定一些属性
@@ -40,7 +40,7 @@ public class Server {
                         }
                     });
 
-            ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();
+            ChannelFuture channelFuture = b.bind(8899).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             bossGroup.shutdownGracefully();
