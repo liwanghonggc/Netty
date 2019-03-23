@@ -26,7 +26,6 @@ public class RecycleTest {
         User user = RECYCLER.get();
 
         user.recycle();
-        RECYCLER.get().recycle();
 
         User user1 = RECYCLER.get();
 
